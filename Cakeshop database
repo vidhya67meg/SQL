@@ -1,0 +1,24 @@
+--Create a cakeshop database
+
+CREATE TABLE cakeshop (id INTEGER PRIMARY KEY, name TEXT,category TEXT, flavor TEXT, price INTEGER, number_sold INTEGER);
+
+INSERT INTO cakeshop VALUES (1, "cupcake small", "cake","chocolate", 3, 5);
+INSERT INTO cakeshop VALUES (2, "cupcake big", "cake","vanilla", 5,5);
+INSERT INTO cakeshop VALUES (3, "birthday cake two tier","cake", "blueberry", 150, 2);
+INSERT INTO cakeshop VALUES (4, "birthday cake one tier","cake", "blueberry", 50, 1);
+INSERT INTO cakeshop VALUES (5, "croissant", "pastry","plain", 2, 10);
+INSERT INTO cakeshop VALUES (6, "mini cake","cake", "coffee", 30, 3);
+INSERT INTO cakeshop VALUES (7, "muffin", "pastry","lemon_poppy", 3, 10);
+INSERT INTO cakeshop VALUES (8, "macarons", "pastry","strawberry", 2, 15);
+INSERT INTO cakeshop VALUES (9, "danish","pastry", "coffee", 10, 7);
+INSERT INTO cakeshop VALUES (10, "wedding cake","cake", "vanilla", 250, 1);
+
+
+--display database ordered by price
+SELECT * FROM cakeshop ORDER BY price;
+
+--display only pastry items in database
+SELECT * FROM cakeshop where category="pastry";
+
+
+

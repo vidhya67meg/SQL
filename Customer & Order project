@@ -1,4 +1,4 @@
-
+#In this SQL, I'm querying a database with multiple tables in it to gain more information about customers and order data. 
 
 
 SELECT * FROM BIT_DB.customers 

@@ -1,0 +1,52 @@
+# For this project, I downloaded Spotify data(Top 50 songs in 2021) from Kaggle.
+# Then I created a table to insert Spotify data into.
+# Finally, I performed analytics on the data using SQL. 
+
+#Creating the table: 
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+#Then I inserted the Spotify Data .csv into the table.
+
+#Next, I explored the data using the following SQL. 
+
+--Who are the top 5 most tracks in 2021 and what are their dacnceability?
+SELECT track_name, danceability,popularity
+FROM spotifydata
+ORDER BY popularity desc
+LIMIT 5
+
+----Which artists have more than 2 of their songs in the top 50?
+SELECT artist_name, count(artist_name)
+FROM spotifydata
+GROUP BY artist_name
+HAVING count(artist_name)>2
+ORDER BY count(artist_name)desc
+
+
+----Calculate artists who have an average popularity of 90 or above.
+WITH temptable AS (SELECT artist_name, avg(popularity)as average_popularity
+FROM spotifydata
+GROUP BY artist_name)
+
+SELECT artist_name, average_popularity, 
+FROM temptable
+WHERE average_popularity>=90;

@@ -1,0 +1,72 @@
+--find the murder report
+select *
+from crime_scene_report
+where city='SQL City'
+and type='murder'
+and date='20180115'
+
+--find information about witness 1
+select *
+from person
+where address_street_name='Northwestern Dr' 
+order by address_number desc
+
+--find information about witness 2
+select *
+from person
+where address_street_name='Franklin Ave' 
+
+--find transcript of person 1 in interview
+Select *
+from interview
+where person_id=14887
+
+--find transcript of person 2 in interview
+Select *
+from interview
+where person_id=16371
+
+--getting information from gym details and car details based on transcript
+select *
+from get_fit_now_check_in
+where check_in_date=20180109
+
+select *
+from get_fit_now_check_in
+where check_in_date=20180109
+and membership_id like('%48z%')
+
+select *
+from get_fit_now_member
+where membership_status='gold'
+
+select *
+from drivers_license
+where plate_number like('%H42W%') and id= 173289 or id= 423327
+
+select *
+from person
+where license_id=423327
+
+-- MURDER = JEREMY BOWERS
+
+-- getting information from facebookevent and car details based on murders transcripts
+select *
+from drivers_license
+where hair_color='red'
+and car_make='Tesla'
+and car_model='Model S'
+and height>= 65 
+and height<=67
+
+select person_id, count(person_id)
+from facebook_event_checkin 
+where event_name='SQL Symphony Concert'
+and date like '201712%'
+group by person_id
+having count(person_id)=3
+
+select * 
+from person
+where id=24556 or id=99716
+--REAL CULPRIT = MIRANDA PRIESTLY
